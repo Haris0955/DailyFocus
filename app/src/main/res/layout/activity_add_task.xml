@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Task Title Input -->
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Task Title"
+        android:importantForAccessibility="yes" />
+
+    <!-- Task Description Input -->
+    <EditText
+        android:id="@+id/descriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Description (optional)"
+        android:importantForAccessibility="yes" />
+
+    <!-- Task Priority Input -->
+    <EditText
+        android:id="@+id/priorityEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Priority (1 = High, 2 = Medium, 3 = Low)"
+        android:importantForAccessibility="yes" />
+
+    <!-- Due Date Selection Button -->
+    <Button
+        android:id="@+id/dueDateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Due Date"
+        android:importantForAccessibility="yes" />
+
+    <!-- Save Task Button -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Task"
+        android:importantForAccessibility="yes" />
+
+</LinearLayout>

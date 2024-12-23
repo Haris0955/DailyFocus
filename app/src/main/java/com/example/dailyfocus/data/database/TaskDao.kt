@@ -16,9 +16,17 @@ interface TaskDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task: TaskEntity)
 
+    @Delete
+    suspend fun deleteTask(task: TaskEntity)
+
     @Update
     suspend fun updateTask(task: TaskEntity)
 
-    @Delete
-    suspend fun deleteTask(task: TaskEntity)
+    @Query("DELETE FROM tasks WHERE id = :taskId")
+    suspend fun deleteTaskById(taskId: Int)
+
+    @Query("SELECT * FROM tasks WHERE id = :taskId")
+    fun getTaskById(taskId: Long): LiveData<TaskEntity>
+
 }
+

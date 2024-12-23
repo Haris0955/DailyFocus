@@ -13,21 +13,29 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     private val taskDao = AppDatabase.getDatabase(application).taskDao()
     val allTasks: LiveData<List<TaskEntity>> = taskDao.getAllTasks()
 
+    // Insert a new task
     fun insertTask(task: TaskEntity) {
         viewModelScope.launch {
             taskDao.insertTask(task)
         }
     }
 
+    // Update an existing task
     fun updateTask(task: TaskEntity) {
         viewModelScope.launch {
             taskDao.updateTask(task)
         }
     }
 
-    fun deleteTask(task: TaskEntity) {
+    // Delete a task by its ID
+    fun deleteTaskById(taskId: Int) {
         viewModelScope.launch {
-            taskDao.deleteTask(task)
+            taskDao.deleteTaskById(taskId)
         }
+    }
+
+    // Retrieve a task by its ID
+    fun getTaskById(taskId: Long): LiveData<TaskEntity> {
+        return taskDao.getTaskById(taskId)
     }
 }

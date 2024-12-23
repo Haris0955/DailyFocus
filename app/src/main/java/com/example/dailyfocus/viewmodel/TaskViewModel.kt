@@ -38,4 +38,10 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     fun getTaskById(taskId: Long): LiveData<TaskEntity> {
         return taskDao.getTaskById(taskId)
     }
+    fun toggleTaskCompletion(task: TaskEntity, isCompleted: Boolean) {
+        viewModelScope.launch {
+            taskDao.updateTask(task.copy(isCompleted = isCompleted))
+        }
+    }
+
 }

@@ -27,20 +27,24 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.taskRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        taskAdapter = TaskAdapter(emptyList(), { task ->
+        taskAdapter = TaskAdapter(emptyList(), onTaskClick = { task ->
             // Handle task click (e.g., navigate to task detail)
             Toast.makeText(this, "Clicked on ${task.title}", Toast.LENGTH_SHORT).show()
-        }, { task ->
+        }, onDeleteClick={ task ->
             // Handle task deletion
             taskViewModel.deleteTaskById(task.id)
             Toast.makeText(this, "Task deleted: ${task.title}", Toast.LENGTH_SHORT).show()
-        }, { task ->
+        }, onEditClick={ task ->
             // Handle task editing: pass the task to EditTaskActivity
             val intent = Intent(this, EditTaskActivity::class.java).apply {
                 putExtra("task_id", task.id) // Pass the task ID
             }
             startActivity(intent)
-        })
+        },
+            onTaskToggleComplete = { task, isCompleted ->
+                taskViewModel.toggleTaskCompletion(task, isCompleted)
+                Toast.makeText(this, if (isCompleted) "Task completed" else "Task marked active", Toast.LENGTH_SHORT).show()
+            })
         recyclerView.adapter = taskAdapter
 
         // Initialize ViewModel

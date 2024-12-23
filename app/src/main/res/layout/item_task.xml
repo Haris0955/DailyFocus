@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
-    android:elevation="4dp"
-    android:backgroundTint="@android:color/white">
+    android:elevation="8dp"
+    android:backgroundTint="@android:color/white"
+    android:padding="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <!-- Task Title -->
         <TextView
             android:id="@+id/taskTitle"
             android:layout_width="0dp"
@@ -20,10 +22,12 @@
             android:text="Task Title"
             android:textSize="18sp"
             android:textStyle="bold"
+            android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <!-- Task Description -->
         <TextView
             android:id="@+id/taskDescription"
             android:layout_width="0dp"
@@ -31,32 +35,61 @@
             android:text="Task Description"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/taskTitle"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageButton
-            android:id="@+id/deleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_delete"
-            android:contentDescription="Delete"
-            android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:tint="@android:color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/taskDescription"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="8dp" />
-
-        <TextView
-            android:id="@+id/editText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <!-- Divider Line -->
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/taskDescription" />
+            app:layout_constraintTop_toBottomOf="@id/taskDescription"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- CheckBox -->
+        <CheckBox
+            android:id="@+id/completionCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Complete"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <!-- Delete Button and Edit Text -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider">
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_delete"
+                android:contentDescription="Delete"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:tint="@android:color/black"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDIT"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
